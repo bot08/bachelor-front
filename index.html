@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Магазин</title>
+    <meta name="description" content="Бакалаврська робота" />
+    <meta name="theme-color" content="#f9fafb" />
+    <link rel="shortcut icon" href="/favicon.svg">    
+    <script>
+      if(localStorage.getItem('theme')=="dark"){
+        document.querySelector("html").classList.add("dark");
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#374151");
+      }
+    </script>
+  </head>
+  <body class="bg-gray-200 dark:bg-gray-800 min-h-screen transition-colors">
+    <div id="app">
+      <style>
+        .fade-in{
+          opacity: 0;
+          animation:fadeIn ease forwards 2s;
+          -webkit-animation:fadeIn ease forwards 2s;
+          -moz-animation:fadeIn ease forwards 2s;
+          -o-animation:fadeIn ease forwards 2s;
+          -ms-animation:fadeIn ease forwards 2s;
+          animation-delay: 2s;
+        }
+        @keyframes fadeIn{
+          0% {opacity:0}
+          100% {opacity:1}
+        }
+        @-moz-keyframes fadeIn{
+          0% {opacity:0}
+          100% {opacity:1}
+        }
+        @-webkit-keyframes fadeIn{
+          0% {opacity:0}
+          100% {opacity:1}
+        }
+        @-o-keyframes fadeIn{
+          0% {opacity:0}
+          100% {opacity:1}
+        }
+        @-ms-keyframes fadeIn{
+          0% {opacity:0}
+          100% {opacity:1}
+        }
+        .text-spin{
+          color:#B9B9B9;
+          height:50px;
+          width:50px;
+        }
+        .text-src{
+          color:#dc2626;
+          font-size: 1.5rem;
+        }
+        .text-load{
+          color:#6e737e;
+          margin:8px;
+        }
+      </style>
+
+      <div class="pb-3 pt-3 bg-gray-50 dark:bg-gray-700 w-screen shadow-sm">
+        <div class="h-9 sm:h-10"></div>
+      </div>
+
+      <div class="absolute top-1/3 w-screen text-center">
+        <h2 class="fade-in text-load text-lg" id="test-res">
+          Сторінка завантажується довше, ніж зазвичай. Спробуйте перезавантажити її або змінити браузер.
+        </h2>
+        <noscript class="text-src">Включіть JavaScript в налаштуванях вашого браузера!</noscript>
+      </div>
+
+      <script nomodule>
+        document.getElementById("test-res").innerHTML = "Вибачте, Ваш браузер не підтримується";
+      </script>
+    </div>
+  </body>
+</html>
