@@ -1,5 +1,5 @@
 # bachelor-front
 
-Бакалаврська робота (бекенд)
+Бакалаврська робота (фронтенд)
 
 https://github.com/bot08/bachelor-back

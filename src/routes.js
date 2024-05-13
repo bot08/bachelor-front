@@ -1,5 +1,6 @@
 import Home from '@/views/Home.vue'
 import Sunglasses from '@/views/sunglasses/Index.vue'
+import SunglassesItem from '@/views/sunglasses/Item.vue'
 
 // import CharactersList from '@/views/Characters/Index.vue'
 // import Dictionary from '@/views/Dictionary.vue'
@@ -42,6 +43,14 @@ export const routes = [
         description: '',
         // image: '/img/icon-fr.png',
         showScroll: true
+      }
+  },
+  {
+    path: "/sunglasses/:id",
+    component: SunglassesItem,
+      meta: { 
+        title: 'Сонцезахисні',
+        description: ''
       }
   },
   {
