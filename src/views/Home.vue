@@ -1,7 +1,6 @@
 <template>
-  <!-- Content -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-1">
-    <Classic v-for="item in menus" :key="item.name" :nameProps="item.name" :hrefProps="item.href" :icoProps="'/img/'+item.href+'.png'"/>
+    <Classic v-for="item in menus" :key="item.name" :nameProps="item.name" :hrefProps="item.href" :icoProps="'/img/'+item.icon+'.png'"/>
   </div>
 </template>
 
@@ -10,7 +9,8 @@
 import Classic from '@/components/home/Classic.vue'
 
 const menus = [
-  { name: 'Сонцезахисні окуляри', href: '/sunglasses' },
-  { name: 'Акаунт', href: '/user' },
+  { name: 'Сонцезахисні окуляри', href: '/sunglasses', icon: 'sunglass_icon' },
+  { name: 'Аксесуари', href: '/accessories', icon: 'accessories_icon' },
+  { name: 'Акаунт', href: '/user', icon: 'person_icon' },
 ]
 </script>

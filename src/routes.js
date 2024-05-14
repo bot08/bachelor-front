@@ -1,6 +1,7 @@
 import Home from '@/views/Home.vue'
 import Sunglasses from '@/views/sunglasses/Index.vue'
 import SunglassesItem from '@/views/sunglasses/Item.vue'
+import Accessories from '@/views/accessories/Index.vue'
 
 // import CharactersList from '@/views/Characters/Index.vue'
 // import Dictionary from '@/views/Dictionary.vue'
@@ -11,6 +12,9 @@ import SunglassesItem from '@/views/sunglasses/Item.vue'
 import About from '@/views/About.vue'
 import User from '@/views/user/Index.vue'
 import Registration from '@/views/user/Registration.vue'
+
+import AddSunglasses from '@/views/add/Sunglasses.vue'
+
 // Lazy loaded
 // const CharacterPage = () => import('@/views/Characters/Character.vue')
 // const GachaWeapons = () => import('@/views/Gacha/Weapons.vue')
@@ -54,6 +58,15 @@ export const routes = [
       }
   },
   {
+    path: '/accessories',
+    component: Accessories,
+      meta: { 
+        title: 'Аксесуари',
+        description: '',
+        showScroll: true
+      }
+  },
+  {
     path: '/about',
     component: About,
       meta: { 
@@ -80,6 +93,16 @@ export const routes = [
         title: 'Сторінка реєстрації користувача',
         description: '',
         // image: '/img/icon.png',
+        // showScroll: true
+      }
+  },
+  {
+    path: '/add/sunglasses',
+    component: AddSunglasses,
+      meta: { 
+        title: 'Добавити сонцезахисні',
+        description: '',
+        // image: '/img/icon-fr.png',
         // showScroll: true
       }
   },

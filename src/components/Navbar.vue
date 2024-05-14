@@ -98,7 +98,7 @@
           <!-- nav -->
           <div class="px-2 pt-2 pb-3 overflow-hidden">
             <transition-group appear enter-active-class="duration-200 ease-out" enter-from-class="opacity-0 translate-x-8" enter-to-class="opacity-100">
-              <router-link v-if="!isTouch" v-for="(item, index) in navigation" :key="item.name" :to="item.href" :style="{ 'transition-delay': 100 + index * 10 + 'ms' }" :class="'w-full inline-block text-left px-3 py-2.5 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 outline-none transition-transform'">
+              <router-link v-if="!isTouch" v-for="(item, index) in navigation" :key="item.name" :to="item.href" :style="{ 'transition-delay': 100 + index * 10 + 'ms' }" :class="'w-full inline-block text-left px-3 py-2.5 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 outline-none transition'">
                 <component :is="item.icon" class="inline h-5 w-5 text-indigo-600 dark:text-indigo-500 mx-1 v-align-min3-5"/>
                 {{ item.name }}
               </router-link>
@@ -119,13 +119,14 @@
 <script>
 // todo: remove out-line if possible & refactor swipes
 import { MenuIcon, XIcon, TranslateIcon, ChevronDownIcon } from '@heroicons/vue/outline'
-import { MoonIcon, HomeIcon, PuzzleIcon, SparklesIcon, InformationCircleIcon, SunIcon, BriefcaseIcon, QuestionMarkCircleIcon, MapIcon } from '@heroicons/vue/solid'
+import { MoonIcon, HomeIcon, PuzzleIcon, SparklesIcon, InformationCircleIcon, SunIcon, UserIcon, BriefcaseIcon, QuestionMarkCircleIcon, MapIcon } from '@heroicons/vue/solid'
 
 const navigation = [
   { name: 'Головна', href: '/', icon: HomeIcon },
   { name: 'Сонцезахисні', href: '/sunglasses', icon: SunIcon },
   { name: 'Аксесуари', href: '/accessories', icon: PuzzleIcon },
   { name: 'Замовлення', href: '/order', icon: SparklesIcon },
+  { name: 'Акаунт', href: '/user', icon: UserIcon },
   { name: 'Про роботу', href: '/about', icon: InformationCircleIcon },
 ]
 

@@ -49,14 +49,16 @@
     </div>
 
     <!-- Buttons -->
-    <div class="flex p-2 mb-4 md:mb-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 rounded-md mx-auto">
+    <div class="mx-auto p-2 mb-4 md:mb-8 max-w-xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 rounded-md">
         <a target="_blank" rel="noreferrer" href="/" class="items-center m-2 text-center px-7 py-2 shadow-lg text-base font-medium leading-6 text-white transition ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 dark:hover:bg-indigo-700 focus:outline-none">
           Відкрити закази
         </a>
         <button @click="logout()" class="items-center m-2 text-center px-7 py-2 shadow-lg text-base font-medium leading-6 text-white transition ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 dark:hover:bg-indigo-700 focus:outline-none">
           Вийти <LogoutIcon class="h-5 w-5 inline v-align-min3-5"/>
         </button>
+        <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити сонцезахисні'" :linkProps="'/add/sunglasses'"/>
+        <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити аксесуар'" :linkProps="'/add/accessories'"/>
       </div>
     </div>
   </div>
@@ -65,10 +67,10 @@
 
 
 <script setup>
-//import LazyImage from '@/components/LazyImage.vue'
 import BaseCard from '@/components/BaseCard.vue'
+import LazyLinkBtn from '@/components/LazyLinkBtn.vue'
 import { LogoutIcon } from '@heroicons/vue/outline'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import axios from 'axios'
 
 import { useAuthStore } from '@/store/user.js'
