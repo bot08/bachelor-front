@@ -2,28 +2,18 @@ import Home from '@/views/Home.vue'
 import Sunglasses from '@/views/sunglasses/Index.vue'
 import SunglassesItem from '@/views/sunglasses/Item.vue'
 import Accessories from '@/views/accessories/Index.vue'
+import AccessoriesItem from '@/views/accessories/Item.vue'
 
-// import CharactersList from '@/views/Characters/Index.vue'
-// import Dictionary from '@/views/Dictionary.vue'
-// import Gacha from '@/views/Gacha/Index.vue'
-// import Items from '@/views/Items/Index.vue'
-// import Useful from '@/views/Useful.vue'
-// import InteractiveMap from '@/views/InteractiveMap.vue'
+import OrderAdd from '@/views/order/Add.vue'
+
 import About from '@/views/About.vue'
 import User from '@/views/user/Index.vue'
 import Registration from '@/views/user/Registration.vue'
 
 import AddSunglasses from '@/views/add/Sunglasses.vue'
+import AddAccessories from '@/views/add/Accessories.vue'
 
 // Lazy loaded
-// const CharacterPage = () => import('@/views/Characters/Character.vue')
-// const GachaWeapons = () => import('@/views/Gacha/Weapons.vue')
-// const GachaChronicle = () => import('@/views/Gacha/Chronicle.vue')
-// const WeaponsPage = () => import('@/views/Items/Weapons.vue')
-// const WeaponPage = () => import('@/views/Items/Weapon.vue')
-// const DevIndex = () => import('@/views/Dev/Index.vue')
-// const DevUser = () => import('@/views/Dev/User.vue')
-// const Wardrobe = () => import('@/views/Wardrobe.vue')
 const NotFound = () => import('@/views/NotFound.vue')
 
 
@@ -67,6 +57,24 @@ export const routes = [
       }
   },
   {
+    path: "/accessories/:id",
+    component: AccessoriesItem,
+      meta: { 
+        title: 'Аксесуар',
+        description: ''
+      }
+  },
+  {
+    path: '/order',
+    component: OrderAdd,
+      meta: { 
+        title: 'Замовлення',
+        description: '',
+        // image: '/img/icon-fr.png',
+        // showScroll: true
+      }
+  },
+  {
     path: '/about',
     component: About,
       meta: { 
@@ -101,6 +109,16 @@ export const routes = [
     component: AddSunglasses,
       meta: { 
         title: 'Добавити сонцезахисні',
+        description: '',
+        // image: '/img/icon-fr.png',
+        // showScroll: true
+      }
+  },
+  {
+    path: '/add/accessories',
+    component: AddAccessories,
+      meta: { 
+        title: 'Добавити аксесуар',
         description: '',
         // image: '/img/icon-fr.png',
         // showScroll: true

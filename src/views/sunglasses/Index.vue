@@ -20,7 +20,7 @@
         <!-- Image loading -->
         <LazyImage class="shrink-0">
           <template v-slot:image>
-            <img class="w-28 h-28 mx-3 my-3 drop-shadow" :src="axios.defaults.baseURL+item.ModelImage" alt="icon">
+            <img class="w-28 h-28 mx-3 my-3 drop-shadow rounded-lg" :src="axios.defaults.baseURL+item.ModelImage" alt="icon">
           </template>
           <template v-slot:preloader> 
             <div class="w-24 h-24 bg-gray-200 dark:bg-gray-600 rounded-xl mx-5 my-5 animate-pulse"></div>
@@ -45,7 +45,7 @@
 
 
 <script setup>
-// todo sort
+// todo пару сортувань зразу
 import axios from 'axios';
 import { ref } from 'vue';
 import LazyImage from '@/components/LazyImage.vue';
@@ -60,11 +60,11 @@ const SelectMenu = defineAsyncComponent({
 });
 
 const sort = [
-  { name: 'Без сортування', query: '[_id]=-1' },
-  { name: 'Від дорогих', query: '[eye]=1' },
-  { name: 'Від недорогих', query: '[rarity]=-1' },
-  { name: 'По алфавіту', query: '[rarity]=1' },
-  { name: 'Ну якісь', query: '[name]=1' },
+  { name: 'Без сортування', query: '' },
+  { name: 'Від дорогих', query: 'sort=price&order=desc' },
+  { name: 'Від недорогих', query: 'sort=price' },
+  { name: 'Поляризовані', query: 'polarized=true' },
+  { name: 'Без поляризації', query: 'polarized=false' },
 ];
 
 const loading = ref(true);
@@ -74,7 +74,7 @@ const search = ref('');
 const getContent = (apiSort, hidePreloaders) => {
   if (!hidePreloaders) loading.value = true;
 
-  axios.get(`/api/sunglasses/get.php`)
+  axios.get(`/api/sunglasses/get.php?${apiSort}`)
   .then(response => {
     data.value = response.data;
     loading.value = false;
@@ -86,8 +86,8 @@ const getContent = (apiSort, hidePreloaders) => {
 
 const goSearch = (go) => {
   search.value = go;
-  getContent();
+  getContent('name='+go);
 }
 
-getContent();
+getContent('');
 </script>

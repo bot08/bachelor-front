@@ -29,14 +29,14 @@
   </div>
 
   <!--Content-->
-  <div v-if="data.ModelName">
+  <div v-if="data.AccessoryName">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-1 sm:mt-4">
       <!-- img section -->
       <div class="rounded-lg mb-4 sm:mx-4 md:mb-8 overflow-hidden shadow-lg bg-gray-50 dark:bg-gray-700 transition-colors flex justify-center items-end">
         <!-- Image loading -->
         <LazyImage>
           <template v-slot:image>
-            <img class="w-auto h-40 my-3" :src="axios.defaults.baseURL+data.ModelImage" alt="icon">
+            <img class="w-auto h-40 my-3" :src="axios.defaults.baseURL+data.AccessoryImage" alt="icon">
           </template>
           <template v-slot:preloader> 
             <div class="w-auto h-40 my-3" style="padding-top: 3.5rem;">
@@ -51,22 +51,19 @@
       </div>
       <!-- Base info -->
       <BaseCard>
-        <h1 class="px-3 pt-3 pb-2 text-3xl font-extrabold leading-9 tracking-tight sm:leading-10">{{ data.ModelName }}</h1>
+        <h1 class="px-3 pt-3 pb-2 text-3xl font-extrabold leading-9 tracking-tight sm:leading-10">{{ data.AccessoryName }}</h1>
         <p class="px-3 text-lg">
-          <b>Ціна:</b> {{ data.ModelPrice }} грн
+          <b>Ціна:</b> {{ data.AccessoryPrice }} грн
         </p>
         <p class="px-3 text-lg">
-          <b>Виробник:</b> {{ data.ModelManufacturer }} 
-        </p>
-        <p class="px-3 text-lg">
-          <b>Поляризація:</b> {{ data.ModelPolarization ? 'відсутня' : 'наявна' }}
+          <b>Виробник:</b> {{ data.AccessoryManufacturer }} 
         </p>
       </BaseCard>
       <!-- desc -->
       <BaseCard class="md:col-span-2 lg:col-span-1">
         <h3 class="px-3 pt-3 pb-2 text-3xl font-extrabold leading-9 tracking-tight sm:leading-10">Опис</h3>
         <p class="px-3 text-lg">
-          {{ data.ModelDescription }}
+          {{ data.AccessoryDescription }}
         </p>
       </BaseCard>
     </div>
@@ -102,7 +99,7 @@ const data = ref([]);
 
 
 const getContent = () => {
-  axios.get(`/api/sunglasses/get.php?id=${itemID}`)
+  axios.get(`/api/accessories/get.php?id=${itemID}`)
   .then(response => {
     if(!response.data[0]) {
       error.value = true;

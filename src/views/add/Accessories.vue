@@ -2,7 +2,7 @@
   <div class="max-w-lg w-full mx-auto mt-1">
     <BaseCard>
       <h2 class="px-3 sm:px-4 pt-3 text-3xl font-extrabold leading-9 tracking-tight sm:leading-10">
-        Добавити сонцезахисні
+        Добавити аксесуар
       </h2>
 
       <!-- Forms -->
@@ -22,10 +22,6 @@
         <div class="mb-4 relative">
           <input v-model="description" type="text" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
           <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Опис</label>
-        </div>
-        <div class="flex items-center mb-4">
-          <input v-model="porarization" type="checkbox" value="" class="w-5 h-5 ml-1 mr-3 text-blue-600 bg-gray-100 border-gray-300 rounded ring-transparent focus:ring-0 dark:bg-gray-800 dark:border-gray-600 transition-colors">
-          <label for="default-checkbox" class="ms-2 text-base font-medium dark:text-gray-200 transition-colors">Поляризація</label>
         </div>
         <div class="relative px-1 mb-4">
           <label class="block mb-2 text-baase font-medium dark:text-white transition-colors" for="file_input">Картинка (макс. розмір 2мб):</label>
@@ -74,7 +70,6 @@ const name = ref('')
 const manufacturer = ref('')
 const price = ref('')
 const description = ref('')
-const porarization = ref(false)
 const imageInput = ref(null)
 const imageHref = ref('')
 const loadingbtn = ref(false)
@@ -130,13 +125,12 @@ const add = () => {
   .then(() => {
     axios({
       method: 'post', 
-      url:'/api/sunglasses/add.php', 
+      url:'/api/accessories/add.php', 
       data: {
         token: authStore.token,
         manufacturer: manufacturer.value,
         name: name.value,
         image: imageHref.value,
-        polarization: porarization.value,
         description: description.value,
         price: price.value
       }, 
@@ -146,7 +140,7 @@ const add = () => {
     })
     .then(res => {
       if (res.data.message) {
-        alert('Сонцезахисні окуляри успішно додано');
+        alert('Аксесуар успішно додано');
         router.push('/user');
       }
       else {
