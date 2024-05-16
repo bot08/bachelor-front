@@ -58,18 +58,14 @@
     <!-- Buttons -->
     <div class="mx-auto p-2 mb-4 md:mb-8 max-w-xl">
       <div class="grid grid-cols-1 md:grid-cols-2 rounded-md">
-        <a target="_blank" rel="noreferrer" href="/" class="items-center m-2 text-center px-7 py-2 shadow-lg text-base font-medium leading-6 text-white transition ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 dark:hover:bg-indigo-700 focus:outline-none">
-          Відкрити закази
-        </a>
+        <LazyLinkBtn :nameProps="'Відкрити замовлення'" :linkProps="'/order/view'"/>
         <button @click="logout()" class="items-center m-2 text-center px-7 py-2 shadow-lg text-base font-medium leading-6 text-white transition ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 dark:hover:bg-indigo-700 focus:outline-none">
           Вийти <LogoutIcon class="h-5 w-5 inline v-align-min3-5"/>
         </button>
-        <transition enter-active-class="duration-200 ease-in-out transition" enter-from-class="opacity-0 scale-90" enter-to-class="opacity-100 scale-100" leave-active-class="ease-in duration-150 transition" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-90">
+        <transition-group appear enter-active-class="duration-200 ease-in-out transition" enter-from-class="opacity-0 scale-90" enter-to-class="opacity-100 scale-100" leave-active-class="ease-in duration-150 transition" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-90">
           <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити сонцезахисні'" :linkProps="'/add/sunglasses'"/>
-        </transition>
-        <transition enter-active-class="duration-200 ease-in-out transition" enter-from-class="opacity-0 scale-90" enter-to-class="opacity-100 scale-100" leave-active-class="ease-in duration-150 transition" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-90">
-          <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити аксесуар'" :linkProps="'/add/accessories'"/>
-        </transition>
+          <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити аксесуар'" :linkProps="'/add/accessories'"/>    
+        </transition-group>
       </div>
     </div>
   </div>

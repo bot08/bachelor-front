@@ -11,22 +11,57 @@
 
     <BaseCard v-else>
       <h2 class="px-3 sm:px-4 pt-3 text-3xl font-extrabold leading-9 tracking-tight sm:leading-10">
-        Оформити замовлення (ФОР НАВ ПРИКЛАД ОНЛІ)
+        Оформити замовлення (НОТ РЕДІ УЕТ)
       </h2>
 
       <!-- Forms -->
       <form class="w-full px-3 sm:px-4 pt-3 mb-4">
+        <div class="py-1">
+          <h2 class="font-bold mb-1 text-xl">Вибіріть оправу та лінзу:</h2>
+        </div>
         <div class="mb-4 relative">
-          <input v-model="name" type="text" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <input v-model="frameID" type="number" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">ID оправи</label>
+        </div>
+        <div class="mb-4 relative">
+          <input v-model="lensID" type="number" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">ID лінзи</label>
+        </div>
+
+        <div class="py-1">
+          <h2 class="font-bold mb-1 text-xl">Вкажіть ваш рецепт:</h2>
+        </div>
+        <div class="mb-4 relative">
+          <input v-model="dioptersLeft" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Діоптрії (ліве око)</label>
+        </div>
+        <div class="mb-4 relative">
+          <input v-model="dioptersRight" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Діоптрії (праве око)</label>
+        </div>
+        <div class="mb-4 relative">
+          <input v-model="astigmatismLeft" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Астегматика (ліве око)</label>
+        </div>
+        <div class="mb-4 relative">
+          <input v-model="astigmatismRight" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Астегматика (праве око)</label>
+        </div>
+        <div class="mb-4 relative">
+          <input v-model="lensDescription" type="text" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Додаткові параметри (опціонально)</label>
+        </div>
+
+        <div class="py-1">
+          <h2 class="font-bold mb-1 text-xl">Вкажіть куди доставити:</h2>
+        </div>
+        <div class="mb-4 relative">
+          <input v-model="deliveryAddress" type="text" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
           <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Адрес</label>
         </div>
-        <div class="mb-4 relative">
-          <input v-model="price" type="number" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
-          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">ID ...</label>
-        </div>
         <div class="flex items-center mb-4">
-          <input v-model="porarization" type="checkbox" value="" class="w-5 h-5 ml-1 mr-3 text-blue-600 bg-gray-100 border-gray-300 rounded ring-transparent focus:ring-0 dark:bg-gray-800 dark:border-gray-600 transition-colors">
-          <label for="default-checkbox" class="ms-2 text-base font-medium dark:text-gray-200 transition-colors">Швидка доставка</label>
+          <input type="checkbox" value="" class="w-5 h-5 ml-1 mr-3 text-blue-600 bg-gray-100 border-gray-300 rounded ring-transparent focus:ring-0 dark:bg-gray-800 dark:border-gray-600 transition-colors">
+          <label for="default-checkbox" class="ms-2 text-base font-medium dark:text-gray-200 transition-colors">Швидка доставка (нема)</label>
         </div>
       </form>
 
@@ -63,93 +98,73 @@ const authStore = useAuthStore()
 authStore.loadAuthState()
 
 // зміні
-const name = ref('')
-const manufacturer = ref('')
-const price = ref('')
-const description = ref('')
-const porarization = ref(false)
-const imageInput = ref(null)
-const imageHref = ref('')
+const deliveryAddress = ref('')
+const frameID = ref('')
+const lensID = ref('')
+const dioptersLeft = ref('')
+const dioptersRight = ref('')
+const astigmatismLeft = ref('')
+const astigmatismRight = ref('')
+const lensDescription = ref('')
+const lensPrice = ref(0)
+const unitPrice = ref(0)
+const quantity = ref(0)
+
 const loadingbtn = ref(false)
-
-// завантаження картинки
-const onFileChange = (event) => {
-  imageInput.value = event.target.files[0];
-};
-
-const uploadImage = () => {
-  return new Promise((resolve, reject) => {
-    const file = imageInput.value;
-    // виходимо
-    if (!file) {
-      return
-    }
-    const formData = new FormData();
-    formData.append('image', file);
-
-    axios
-    .post('/api/upload_image.php', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    .then(res => {
-      if (res.data.error) {
-        alert(`Помилка: ${res.data.error}`);
-        loadingbtn.value = false;
-        reject(new Error(`Помилка: ${res.data.error}`));
-      } else {
-        console.log(res.data.path)
-        imageHref.value = res.data.path;
-        resolve();
-      }
-    })
-    .catch(error => {
-      reject(error);
-    });
-  });
-};
 
 // Добавляєм
 const add = () => {
-  if(!(name.value && manufacturer.value && price.value && description.value)) {
+  if (
+      !deliveryAddress.value || 
+      !frameID.value || 
+      !lensID.value || 
+      dioptersLeft.value === "" || 
+      dioptersRight.value === "" || 
+      astigmatismLeft.value === "" || 
+      astigmatismRight.value === ""
+  ) {
     alert("Поля не заповнено");
     return
   }
   
   loadingbtn.value = true;
 
-  uploadImage()
-  .then(() => {
-    axios({
-      method: 'post', 
-      url:'/api/sunglasses/add.php', 
-      data: {
-        token: authStore.token,
-        manufacturer: manufacturer.value,
-        name: name.value,
-        image: imageHref.value,
-        polarization: porarization.value,
-        description: description.value,
-        price: price.value
-      }, 
-      headers: {
-        'Content-Type': 'application/json'
-      } 
-    })
-    .then(res => {
-      if (res.data.message) {
-        alert('Сонцезахисні окуляри успішно додано');
-        router.push('/user');
-      }
-      else {
-        alert('Помилка даних');
-      }
-    })
-    .catch(() => {
-      alert('Помилка')
-    })
-    .finally(() => loadingbtn.value = false)
+  axios({
+    method: 'post', 
+    url:'/api/orders/add.php', 
+    data: {
+      order: {
+        deliveryAddress: deliveryAddress.value,
+        totalAmount: (unitPrice.value + lensPrice.value)*quantity.value,
+        frameID: frameID.value,
+        lensID: lensID.value,
+        dioptersLeft: dioptersLeft.value,
+        dioptersRight: dioptersRight.value,
+        astigmatismLeft: astigmatismLeft.value,
+        astigmatismRight: astigmatismRight.value,
+        lensDescription: lensDescription.value,
+        lensPrice: lensPrice.value,
+        quantity: quantity.value,
+        unitPrice: unitPrice.value
+      },
+      token: authStore.token
+    }, 
+    headers: {
+      'Content-Type': 'application/json'
+    } 
   })
+  .then(res => {
+    if (res.data.message) {
+      alert('Замовлення оформлено. Деталі можна переглянути натиснувши кнопку "Відкрити замовлення" в профілі користувача.');
+      router.push('/user');
+    }
+    else {
+      alert('Помилка даних');
+    }
+  })
+  .catch(() => {
+    alert('Помилка серверу')
+  })
+  .finally(() => loadingbtn.value = false)
 }
 </script>

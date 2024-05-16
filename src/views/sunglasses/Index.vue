@@ -4,7 +4,7 @@
 
   <!--Preloader-->
   <div v-if="loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-    <div v-for="n in (search == '' ? 20 : Math.max(1, 4 - search.length))" :key="n" class="flex rounded-lg mt-1 mb-3 md:mb-8 sm:mx-4 overflow-hidden shadow-lg bg-gray-50 dark:bg-gray-700">
+    <div v-for="n in (search == '' ? 12 : Math.max(1, 4 - search.length))" :key="n" class="flex rounded-lg mt-1 mb-3 md:mb-8 sm:mx-4 overflow-hidden shadow-lg bg-gray-50 dark:bg-gray-700">
       <div class="w-24 h-24 bg-gray-200 dark:bg-gray-600 rounded-xl mx-5 my-5 animate-pulse"></div>
       <div class="px-1 my-auto animate-pulse">
         <p class="h-6 mb-2 bg-gray-200 dark:bg-gray-600 rounded w-32 sm:w-24"></p>

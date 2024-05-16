@@ -5,15 +5,16 @@ import Accessories from '@/views/accessories/Index.vue'
 import AccessoriesItem from '@/views/accessories/Item.vue'
 
 import OrderAdd from '@/views/order/Add.vue'
+import ViewOrders from '@/views/order/View.vue'
 
 import About from '@/views/About.vue'
 import User from '@/views/user/Index.vue'
 import Registration from '@/views/user/Registration.vue'
 
-import AddSunglasses from '@/views/add/Sunglasses.vue'
-import AddAccessories from '@/views/add/Accessories.vue'
-
 // Lazy loaded
+const AddSunglasses = () => import('@/views/add/Sunglasses.vue')
+const AddAccessories = () => import('@/views/add/Accessories.vue')
+
 const NotFound = () => import('@/views/NotFound.vue')
 
 
@@ -65,6 +66,16 @@ export const routes = [
       }
   },
   {
+    path: '/about',
+    component: About,
+      meta: { 
+        title: 'Про роботу',
+        description: '',
+        // image: '/img/icon-fr.png',
+        // showScroll: true
+      }
+  },
+  {
     path: '/order',
     component: OrderAdd,
       meta: { 
@@ -75,13 +86,12 @@ export const routes = [
       }
   },
   {
-    path: '/about',
-    component: About,
+    path: '/order/view',
+    component: ViewOrders,
       meta: { 
-        title: 'Про роботу',
+        title: 'Перегляд замовлень',
         description: '',
-        // image: '/img/icon-fr.png',
-        // showScroll: true
+        showScroll: true
       }
   },
   {

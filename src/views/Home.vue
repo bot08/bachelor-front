@@ -11,6 +11,8 @@ import Classic from '@/components/home/Classic.vue'
 const menus = [
   { name: 'Сонцезахисні окуляри', href: '/sunglasses', icon: 'sunglass_icon' },
   { name: 'Аксесуари', href: '/accessories', icon: 'accessories_icon' },
+  { name: 'Окуляри під замовлення', href: '/order', icon: 'glasses_icon' },
   { name: 'Акаунт', href: '/user', icon: 'person_icon' },
+  { name: 'Про роботу', href: '/about', icon: 'info_icon' },
 ]
 </script>
