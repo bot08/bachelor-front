@@ -48,7 +48,7 @@ import { useAuthStore } from '@/store/user.js'
 
 const authStore = useAuthStore()
 
-// Перевіряємо чи користувач не зайшов раніще
+// Перевіряємо чи користувач не зайшов раніше
 authStore.loadAuthState()
 
 const SelectMenu = defineAsyncComponent({

@@ -27,7 +27,7 @@
       </h3>
 
       <!-- Preloader -->
-      <div v-if="loading">
+      <div v-if="true">
         <p class="h-5 mt-1 mb-2 bg-gray-200 dark:bg-gray-600 rounded w-full animate-pulse" v-for="n in 7" :key="n"></p>
         <p class="h-5 mt-1 mb-2 bg-gray-200 dark:bg-gray-600 rounded w-36 animate-pulse"></p>
         <p class="h-5 mt-1 mb-2 bg-gray-200 dark:bg-gray-600 rounded w-48 animate-pulse"></p>
@@ -50,7 +50,7 @@
   <div class="flex p-2">
     <div class="grid grid-cols-1 sm:grid-cols-2 rounded-md mx-auto">
       <LazyLinkBtn :nameProps="'На головну'" :linkProps="'/'"/>
-      <LazyLinkBtn :nameProps="'Акаунт'" :linkProps="'/user'"/>
+      <LazyLinkBtn :nameProps="'Профіль (авторизація)'" :linkProps="'/user'"/>
     </div>
   </div>
 
@@ -61,7 +61,7 @@
 </template>
 
 
-<script>
+<script setup>
 //import axios from 'axios'
 import LazyImage from '@/components/LazyImage.vue'
 import LazyLinkBtn from '@/components/LazyLinkBtn.vue'
@@ -75,26 +75,4 @@ import { defineAsyncComponent } from 'vue'
 //   delay: 0,
 // })
 
-export default {
-  components: {
-    LazyImage,
-    LazyLinkBtn,
-    //DiscordIcon
-  },
-
-  data: () => ({
-    loading: true,
-    about: []
-  }),
-
-  created(){
-    this.getContent();
-  },
-
-  methods: {
-    getContent(){
-      
-    }
-  }
-}
 </script>

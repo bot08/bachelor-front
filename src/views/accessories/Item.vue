@@ -69,7 +69,7 @@
     </div>
 
     <div class="flex justify-center mb-4">
-      <LazyLinkBtn :nameProps="'Замовити'" :linkProps="'/order'"/>
+      <LazyLinkBtn :nameProps="'Замовити'" :linkProps="'/order?accessory='+itemID"/>
     </div>
   </div>
 

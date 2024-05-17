@@ -6,13 +6,19 @@
 
 
 <script setup>
+import { computed } from 'vue'
 import Classic from '@/components/home/Classic.vue'
+import { useAuthStore } from '@/store/user.js'
 
-const menus = [
+const authStore = useAuthStore()
+// Перевіряємо чи користувач не зайшов раніше
+authStore.loadAuthState()
+
+const menus = computed(() => [
   { name: 'Сонцезахисні окуляри', href: '/sunglasses', icon: 'sunglass_icon' },
   { name: 'Аксесуари', href: '/accessories', icon: 'accessories_icon' },
   { name: 'Окуляри під замовлення', href: '/order', icon: 'glasses_icon' },
-  { name: 'Акаунт', href: '/user', icon: 'person_icon' },
+  { name: authStore.isAuthenticated ? 'Профіль' : 'Авторизація', href: '/user', icon: 'person_icon' },
   { name: 'Про роботу', href: '/about', icon: 'info_icon' },
-]
+])
 </script>

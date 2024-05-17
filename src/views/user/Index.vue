@@ -90,7 +90,7 @@ const loadingbtn = ref(false)
 
 const userData = ref('')
 
-// Перевіряємо чи користувач не зайшов раніще
+// Перевіряємо чи користувач не зайшов раніше
 authStore.loadAuthState()
 
 // вийти

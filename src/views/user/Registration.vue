@@ -42,9 +42,8 @@
 
 <script setup>
 // TODO fix laoding btn
-import LazyImage from '@/components/LazyImage.vue'
 import BaseCard from '@/components/BaseCard.vue'
-import { ref } from 'vue'
+import { ref, onActivated } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router';
 const router = useRouter();
@@ -52,6 +51,15 @@ const router = useRouter();
 import { useAuthStore } from '@/store/user.js'
 
 const authStore = useAuthStore()
+
+onActivated(() => {
+  // Перевіряємо чи користувач не зайшов раніше
+  authStore.loadAuthState()
+  if (authStore.isAuthenticated) {
+    alert('Ви вже авторизовані');
+    router.push('/user');
+  }
+})
 
 const login = ref('')
 const pass = ref('')
