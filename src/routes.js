@@ -52,7 +52,7 @@ export const routes = [
     path: '/accessories',
     component: Accessories,
       meta: { 
-        title: 'Аксесуари',
+        title: 'лінзи та аксесуари',
         description: '',
         showScroll: true
       }

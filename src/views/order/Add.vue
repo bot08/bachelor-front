@@ -80,6 +80,7 @@
 
 
 <script setup>
+// todo: вибір оправи + лінз нормально. + інші товари з хедера ловити
 defineOptions({
   name: 'notAlive',
 })
