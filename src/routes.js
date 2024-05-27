@@ -14,6 +14,8 @@ import Registration from '@/views/user/Registration.vue'
 // Lazy loaded
 const AddSunglasses = () => import('@/views/add/Sunglasses.vue')
 const AddAccessories = () => import('@/views/add/Accessories.vue')
+const AddFrames = () => import('@/views/add/Frames.vue')
+const AddLenses = () => import('@/views/add/Lenses.vue')
 
 const NotFound = () => import('@/views/NotFound.vue')
 
@@ -130,8 +132,22 @@ export const routes = [
       meta: { 
         title: 'Добавити аксесуар',
         description: '',
-        // image: '/img/icon-fr.png',
-        // showScroll: true
+      }
+  },
+  {
+    path: '/add/frames',
+    component: AddFrames,
+      meta: { 
+        title: 'Добавити оправу',
+        description: '',
+      }
+  },
+  {
+    path: '/add/lenses',
+    component: AddLenses,
+      meta: { 
+        title: 'Добавити лінзи для окулярів',
+        description: '',
       }
   },
 

@@ -16,7 +16,7 @@ authStore.loadAuthState()
 
 const menus = computed(() => [
   { name: 'Сонцезахисні окуляри', href: '/sunglasses', icon: 'sunglass_icon' },
-  { name: 'Лінзи та аксесуари', href: '/accessories', icon: 'accessories_icon' },
+  { name: 'Контанктні лінзи та аксесуари', href: '/accessories', icon: 'accessories_icon' },
   { name: 'Окуляри під замовлення', href: '/order', icon: 'glasses_icon' },
   { name: authStore.isAuthenticated ? 'Профіль' : 'Авторизація', href: '/user', icon: 'person_icon' },
   { name: 'Про роботу', href: '/about', icon: 'info_icon' },

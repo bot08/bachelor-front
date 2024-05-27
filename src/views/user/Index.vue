@@ -64,7 +64,9 @@
         </button>
         <transition-group appear enter-active-class="duration-200 ease-in-out transition" enter-from-class="opacity-0 scale-90" enter-to-class="opacity-100 scale-100" leave-active-class="ease-in duration-150 transition" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-90">
           <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити сонцезахисні'" :linkProps="'/add/sunglasses'"/>
-          <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити аксесуар'" :linkProps="'/add/accessories'"/>    
+          <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити аксесуар'" :linkProps="'/add/accessories'"/>
+          <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити оправу'" :linkProps="'/add/frames'"/>
+          <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити лінзу'" :linkProps="'/add/lenses'"/>
         </transition-group>
       </div>
     </div>

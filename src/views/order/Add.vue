@@ -19,9 +19,45 @@
         <div class="py-1">
           <h2 class="font-bold mb-1 text-xl">Вибіріть оправу та лінзу:</h2>
         </div>
-        <div class="mb-4 relative">
-          <input v-model="frameID" type="number" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
-          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">ID оправи</label>
+        
+        <div v-if="!frameData" style="height: 434px;"></div>
+        <div v-else>
+          <div class="mb-4 flex overflow-x-scroll">
+            <div v-for="item in frameData" :key="item.FrameID" @click="frameID = item.FrameID" :class="'rounded-lg mt-1 mb-4 mx-2 sm:mx-4 shrink-0 overflow-hidden shadow-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 transition-colors ' + (frameID == item.FrameID && 'ring-4 ring-indigo-500')">
+              <div class="blcok">
+                <!-- Image loading -->
+                <LazyImage class="shrink-0 flex justify-center">
+                  <template v-slot:image>
+                    <img class="w-24 h-24 mx-3 my-3 drop-shadow rounded-lg" :src="axios.defaults.baseURL+item.FrameImage" alt="icon">
+                  </template>
+                  <template v-slot:preloader> 
+                    <div class="w-20 h-20 bg-gray-200 dark:bg-gray-600 rounded-xl mx-5 my-5 animate-pulse"></div>
+                  </template>
+                  <template v-slot:error>
+                    <img class="w-24 h-24 mx-3 my-3 drop-shadow" src="/img/no_image.png" alt="icon error">
+                  </template>
+                </LazyImage>
+                <!-- /Image -->
+                <div class="px-2 py-1 my-auto mr-2">
+                  <div class="font-bold text-lg">{{ item.FrameName }}</div>
+                  <div class="text-base">{{ item.FramePrice }} грн</div>
+                  <div class="text-base mb-2">{{ item.FrameManufacturer }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4 flex overflow-x-scroll">
+            <div v-for="item in lensData" :key="item.LensID" @click="lensID = item.LensID" :class="'rounded-lg mt-1 mb-4 mx-2 sm:mx-4 shrink-0 overflow-hidden shadow-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 transition-colors ' + (lensID == item.LensID && 'ring-4 ring-indigo-500')">
+              <div class="blcok">
+                <div class="px-2 py-1 my-auto mr-2">
+                  <div class="font-bold text-lg">{{ item.LensType }}</div>
+                  <div class="text-base">{{ item.LensPrice }} грн</div>
+                  <div class="text-base">{{ item.LensManufacturer }}</div>
+                  <div class="text-base mb-2">{{ item.LensManufacturerCountry }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="mb-4 relative">
           <input v-model="lensID" type="number" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
@@ -80,12 +116,14 @@
 
 
 <script setup>
+// Тут супер крінжа, сорі
 // todo: вибір оправи + лінз нормально. + інші товари з хедера ловити
 defineOptions({
   name: 'notAlive',
 })
 
 import BaseCard from '@/components/BaseCard.vue'
+import LazyImage from '@/components/LazyImage.vue';
 import LazyLinkBtn from '@/components/LazyLinkBtn.vue'
 import { ref } from 'vue'
 import axios from 'axios'
@@ -107,9 +145,13 @@ const dioptersRight = ref('')
 const astigmatismLeft = ref('')
 const astigmatismRight = ref('')
 const lensDescription = ref('')
+
 const lensPrice = ref(0)
 const unitPrice = ref(0)
 const quantity = ref(0)
+
+const frameData = ref('')
+const lensData = ref('')
 
 const loadingbtn = ref(false)
 
@@ -168,4 +210,32 @@ const add = () => {
   })
   .finally(() => loadingbtn.value = false)
 }
+
+// Завантажуєм лінзи на оправи
+const getLensAndFrames = (apiSort) => {
+  axios.get(`/api/frames/get.php?${apiSort}`)
+  .then(response => {
+    frameData.value = response.data;
+    //loading.value = false;
+  })
+  .catch(() => {
+    setTimeout(() => getLensAndFrames(apiSort), 999);
+  });
+  axios.get(`/api/lens/get.php?${apiSort}`)
+  .then(response => {
+    lensData.value = response.data;
+    //loading.value = false;
+  })
+  .catch(() => {
+    setTimeout(() => getLensAndFrames(apiSort), 999);
+  });
+};
+
+const goSearch = (go) => {
+  search.value = go;
+  getContent('name='+go);
+}
+
+// Завандажуєм дані
+getLensAndFrames();
 </script>
