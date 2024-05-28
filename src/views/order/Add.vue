@@ -11,7 +11,7 @@
 
     <BaseCard v-else>
       <h2 class="px-3 sm:px-4 pt-3 text-3xl font-extrabold leading-9 tracking-tight sm:leading-10">
-        Оформити замовлення (НОТ РЕДІ УЕТ)
+        Оформити замовлення
       </h2>
 
       <!-- Forms -->
@@ -68,20 +68,24 @@
           <h2 class="font-bold mb-1 text-xl">Вкажіть ваш рецепт:</h2>
         </div>
         <div class="mb-4 relative">
+          <input v-model="dioptersRight" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Діоптрії (праве око)</label>
+        </div>
+        <div class="mb-4 relative">
           <input v-model="dioptersLeft" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
           <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Діоптрії (ліве око)</label>
         </div>
         <div class="mb-4 relative">
-          <input v-model="dioptersRight" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
-          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Діоптрії (праве око)</label>
+          <input v-model="astigmatismRight" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Астегматика (праве око)</label>
         </div>
         <div class="mb-4 relative">
           <input v-model="astigmatismLeft" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
           <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Астегматика (ліве око)</label>
         </div>
         <div class="mb-4 relative">
-          <input v-model="astigmatismRight" type="number" step="0.01" max="25" min="-25" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
-          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Астегматика (праве око)</label>
+          <input v-model="DP" type="number" step="0.1" max="100" min="20" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
+          <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">DP (міжзінична відстань)</label>
         </div>
         <div class="mb-4 relative">
           <input v-model="lensDescription" type="text" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
@@ -96,8 +100,8 @@
           <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">Адрес</label>
         </div>
         <div class="flex items-center mb-4">
-          <input type="checkbox" value="" class="w-5 h-5 ml-1 mr-3 text-blue-600 bg-gray-100 border-gray-300 rounded ring-transparent focus:ring-0 dark:bg-gray-800 dark:border-gray-600 transition-colors">
-          <label for="default-checkbox" class="ms-2 text-base font-medium dark:text-gray-200 transition-colors">Швидка доставка (нема)</label>
+          <input v-model="fastDelivery" type="checkbox" value="" class="w-5 h-5 ml-1 mr-3 text-blue-600 bg-gray-100 border-gray-300 rounded ring-transparent focus:ring-0 dark:bg-gray-800 dark:border-gray-600 transition-colors">
+          <label for="default-checkbox" class="ms-2 text-base font-medium dark:text-gray-200 transition-colors">Швидка доставка</label>
         </div>
       </form>
 
@@ -110,6 +114,7 @@
       <p class="text-md text-center text-gray-400 dark:text-gray-400 mb-3">
         <router-link :to="'/'">Головна</router-link>
       </p>
+      <!-- {{ (lensData && frameData && lensID && frameID) && (lensData[lensID-1].LensPrice + frameData[frameID-1].FramePrice)*quantity }} -->
     </BaseCard>
   </div>
 </template>
@@ -138,6 +143,7 @@ authStore.loadAuthState()
 
 // зміні
 const deliveryAddress = ref('')
+const fastDelivery = ref(false)
 const frameID = ref('')
 const lensID = ref('')
 const dioptersLeft = ref('')
@@ -145,10 +151,10 @@ const dioptersRight = ref('')
 const astigmatismLeft = ref('')
 const astigmatismRight = ref('')
 const lensDescription = ref('')
+const DP = ref('')
 
-const lensPrice = ref(0)
 const unitPrice = ref(0)
-const quantity = ref(0)
+const quantity = ref(1)
 
 const frameData = ref('')
 const lensData = ref('')
@@ -178,7 +184,8 @@ const add = () => {
     data: {
       order: {
         deliveryAddress: deliveryAddress.value,
-        totalAmount: (unitPrice.value + lensPrice.value)*quantity.value,
+        fastDelivery: fastDelivery.value,
+        totalAmount: lensPrice() * quantity.value,
         frameID: frameID.value,
         lensID: lensID.value,
         dioptersLeft: dioptersLeft.value,
@@ -186,9 +193,10 @@ const add = () => {
         astigmatismLeft: astigmatismLeft.value,
         astigmatismRight: astigmatismRight.value,
         lensDescription: lensDescription.value,
-        lensPrice: lensPrice.value,
+        dp: DP.value,
+        lensPrice: lensPrice(), // ?
         quantity: quantity.value,
-        unitPrice: unitPrice.value
+        unitPrice: unitPrice.value // ?
       },
       token: authStore.token
     }, 
@@ -231,9 +239,8 @@ const getLensAndFrames = (apiSort) => {
   });
 };
 
-const goSearch = (go) => {
-  search.value = go;
-  getContent('name='+go);
+const lensPrice = () => {
+  return (lensData.value && frameData.value && lensID.value&& frameID.value) && (lensData.value[lensID.value - 1].LensPrice + frameData.value[frameID.value - 1].FramePrice)
 }
 
 // Завандажуєм дані
