@@ -59,10 +59,10 @@
             </div>
           </div>
         </div>
-        <div class="mb-4 relative">
+        <!-- <div class="mb-4 relative">
           <input v-model="lensID" type="number" class="peer pt-8 border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-800 dark:text-gray-200 transition-colors focus:outline-none rounded-lg focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="text" autocomplete="off" />
           <label for="text" class="dark:text-gray-200 peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none origin-left transition-all duration-100 ease-in-out">ID лінзи</label>
-        </div>
+        </div> -->
 
         <div class="py-1">
           <h2 class="font-bold mb-1 text-xl">Вкажіть ваш рецепт:</h2>

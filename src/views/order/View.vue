@@ -19,7 +19,7 @@
     <div v-for="item in data" :key="item.OrderID" class="rounded-lg mt-1 mb-3 md:mb-8 sm:mx-4 overflow-hidden shadow-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-200 transition-colors">
       <router-link :to="'/order/view#'+item.OrderID" class="flex">
         <div class="p-3 my-auto mr-2">
-          <div class="font-bold text-xl"><b>Замовив:</b> {{ item.Username }}</div>
+          <div class="font-bold text-xl"><b>Замовив:</b> {{ item.Username }} <TrashIcon @click="deleteOrder(item.OrderID)" class="h-5 w-5 inline cursor-pointer" style="vertical-align: -1.5px;"/></div>
           <div class="text-lg"><b>Дата:</b> {{ item.OrderDate }}</div>
           <div class="text-lg"><b>Сума замовлення:</b> {{ item.TotalAmount }} грн</div>
           <div class="text-lg"><b>Адрес для доставки:</b> {{ item.DeliveryAddress }}</div>
@@ -53,7 +53,7 @@ import axios from 'axios';
 import { ref } from 'vue';
 import { defineAsyncComponent } from 'vue';
 import SelectMenuLoader from '@/components/SelectMenuLoader.vue';
-import SearchNothing from '@/components/SearchNothing.vue';
+import { TrashIcon } from "@heroicons/vue/solid"
 
 import { useAuthStore } from '@/store/user.js'
 
@@ -88,6 +88,21 @@ const getContent = (apiSort, hidePreloaders) => {
   .catch(() => {
     setTimeout(() => getContent(apiSort), 999);
   });
+};
+
+const deleteOrder = (id) => {
+  axios({
+    method: 'post', 
+    url:'/api/orders/delete.php', 
+    data: {
+      token: authStore.token,
+      orderID: id
+    }, 
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(() => getContent('', true))
 };
 
 const goSearch = (go) => {
