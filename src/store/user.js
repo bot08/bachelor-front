@@ -11,7 +11,7 @@ export const useAuthStore = defineStore('auth', {
       return new Promise((resolve, reject) => {
         axios({
           method: 'post', 
-          url:'/api/users/login.php', 
+          url: '/api/users/login.php', 
           data: credentials, 
           headers: {
             'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ export const useAuthStore = defineStore('auth', {
         })
         .then(res => {
           if (res.data.token) {
-            localStorage.setItem('token', res.data.token)
+            document.cookie = `token=${res.data.token};path=/;max-age=${7 * 24 * 60 * 60}`
             this.token = res.data.token
             this.isAuthenticated = true
             resolve(res.data.token)
@@ -36,14 +36,19 @@ export const useAuthStore = defineStore('auth', {
       })
     },
     logout() {
-      localStorage.removeItem('token')
+      document.cookie = 'token=;path=/;max-age=0'
       this.token = null
       this.isAuthenticated = false
     },
     loadAuthState() {
-      const token = localStorage.getItem('token')
+      const token = this.getCookie('token')
       this.token = token
       this.isAuthenticated = !!token
+    },
+    getCookie(name) {
+      const value = `; ${document.cookie}`
+      const parts = value.split(`; ${name}=`)
+      if (parts.length === 2) return parts.pop().split(';').shift()
     }
   }
 })
