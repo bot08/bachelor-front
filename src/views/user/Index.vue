@@ -67,6 +67,7 @@
           <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити аксесуар'" :linkProps="'/add/accessories'"/>
           <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити оправу'" :linkProps="'/add/frames'"/>
           <LazyLinkBtn v-if="userData.RoleID > 0" :nameProps="'Добавити лінзу'" :linkProps="'/add/lenses'"/>
+          <LazyLinkBtn v-if="userData.RoleID > 1" :nameProps="'Редагувати користувачів'" :linkProps="'/user/edit'"/>
         </transition-group>
       </div>
     </div>

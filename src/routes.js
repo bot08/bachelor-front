@@ -16,6 +16,7 @@ const AddSunglasses = () => import('@/views/add/Sunglasses.vue')
 const AddAccessories = () => import('@/views/add/Accessories.vue')
 const AddFrames = () => import('@/views/add/Frames.vue')
 const AddLenses = () => import('@/views/add/Lenses.vue')
+const EditUsers = () => import('@/views/user/Edit.vue')
 
 const NotFound = () => import('@/views/NotFound.vue')
 
@@ -147,6 +148,14 @@ export const routes = [
     component: AddLenses,
       meta: { 
         title: 'Добавити лінзи для окулярів',
+        description: '',
+      }
+  },
+  {
+    path: '/user/edit',
+    component: EditUsers,
+      meta: { 
+        title: 'Редагування користувачів',
         description: '',
       }
   },
