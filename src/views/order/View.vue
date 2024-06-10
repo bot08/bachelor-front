@@ -25,7 +25,8 @@
           <div class="text-lg"><b>Адрес для доставки:</b> {{ item.DeliveryAddress }}</div>
           <div class="text-lg"><b>Швидка доставка:</b> {{ item.FastDelivery ? 'так' : 'ні' }}</div>
           <div class="text-lg mb-2"><b>Тип:</b> {{ item.Details[0].LensID && 'Окуляри з рецептом' }} {{ item.Details[0].ModelID && 'Сонцезахисні окуляри' }} {{ item.Details[0].AccessoryID && 'Аксесуари та контактні лінзи' }}</div>
-          <div class="text-lg mb-2"><b>DP:</b> {{ item.Details[0].DP }}</div>
+          <div v-if="!item.Details[0].LensID" class="text-lg mb-2"><router-link :to="item.Details[0].ModelID ? '/sunglasses/'+item.Details[0].ModelID : '/accessories/'+item.Details[0].AccessoryID"><b>Перейти на сторінку товару</b></router-link></div>
+          <div v-else class="text-lg mb-2"><b>DP:</b> {{ item.Details[0].DP }}</div>
         </div>
       </router-link>
     </div>
