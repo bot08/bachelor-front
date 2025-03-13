@@ -3,6 +3,7 @@ import Sunglasses from '@/views/sunglasses/Index.vue'
 import SunglassesItem from '@/views/sunglasses/Item.vue'
 import Accessories from '@/views/accessories/Index.vue'
 import AccessoriesItem from '@/views/accessories/Item.vue'
+import Chat from '@/views/Chat.vue'
 
 import OrderAdd from '@/views/order/Add.vue'
 import ViewOrders from '@/views/order/View.vue'
@@ -94,6 +95,16 @@ export const routes = [
       meta: { 
         title: 'Перегляд замовлень',
         description: '',
+        showScroll: true
+      }
+  },
+  {
+    path: '/chat',
+    component: Chat,
+      meta: { 
+        title: 'Чат с ШІ',
+        description: '',
+        //image: '/img/icon-us.png',
         showScroll: true
       }
   },
