@@ -119,7 +119,7 @@
 <script>
 // todo: remove out-line if possible & refactor swipes
 import { MenuIcon, XIcon, TranslateIcon, ChevronDownIcon } from '@heroicons/vue/outline'
-import { MoonIcon, HomeIcon, PuzzleIcon, SparklesIcon, InformationCircleIcon, SunIcon, UserIcon, BriefcaseIcon, QuestionMarkCircleIcon, MapIcon } from '@heroicons/vue/solid'
+import { MoonIcon, HomeIcon, PuzzleIcon, SparklesIcon, InformationCircleIcon, SunIcon, UserIcon, BriefcaseIcon, QuestionMarkCircleIcon, MapIcon, ChatIcon } from '@heroicons/vue/solid'
 import { computed } from 'vue'
 import { useAuthStore } from '@/store/user.js'
 
@@ -133,6 +133,7 @@ const navigation = computed(() => [
   { name: 'Сонцезахисні', href: '/sunglasses', icon: SunIcon },
   { name: 'Аксесуари', href: '/accessories', icon: PuzzleIcon },
   { name: 'Замовлення', href: '/order', icon: SparklesIcon },
+  { name: 'Чат з ШІ', href: '/chat', icon: ChatIcon },
   { name: authStore.isAuthenticated ? 'Профіль' : 'Авторизація', href: '/user', icon: UserIcon },
   { name: 'Про роботу', href: '/about', icon: InformationCircleIcon },
 ])
